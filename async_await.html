@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch User Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #userData {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div id="userData">
+        <h2>User Data</h2>
+        <p id="userInfo">Loading...</p>
+    </div>
+
+    <script>
+        // Async function to simulate fetching user data
+        async function fetchUserData() {
+
+            // Simulate a delay of 3 seconds to fetch user data
+            await new Promise(resolve => setTimeout(resolve, 3000));
+
+            // Return user data after the delay
+            return { name: "John Doe", age: 30, email: "john@example.com" };
+        }
+
+        // Async function to display user data on the webpage
+        async function displayUserData() {
+
+            try {
+                // Await the user data from the fetchUserData function
+                const userData = await fetchUserData();
+                
+                // Select the userInfo element from the DOM
+                const userInfoElement = document.getElementById('userInfo');
+                
+                // Update the content of the userInfo element with the fetched data
+                userInfoElement.textContent = `Name: ${userData.name}, Age: ${userData.age}, Email: ${userData.email}`;
+            } catch (error) {
+                // Log any errors to the console
+                console.error("Error fetching user data:", error);
+
+                // Update the content of the userInfo element with an error message
+                const userInfoElement = document.getElementById('userInfo');
+                userInfoElement.textContent = "Failed to fetch user data";
+            }
+        }
+
+        // Add an event listener to call displayUserData when the DOM content is loaded
+        document.addEventListener('DOMContentLoaded', displayUserData);
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timeout Example</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        padding: 20px;
+        text-align: center;
+    }
+    .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: inline-block;
+    }
+    .message {
+        font-size: 24px;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Timeout Example</h1>
+    <p>Check the page and console for output.</p>
+    
+    <!-- Message we want to update -->
+    <div class="message" id="waitMessage">Wait for it...</div>
+
+    <script>
+
+       // log the "start" to the console, indicating the start of the script execution
+        console.log("Start");
+
+        // Set a timeout function to execute after 5 seconds
+        // The setTimeout function takes two arguments: a function to execute and a delay in milliseconds
+        setTimeout(function() {
+
+            // Update the message on the page after the 5-second delay
+            document.getElementById("waitMessage").textContent = "Wait for it... Done!";
+            console.log("Wait for it...");
+
+        }, 5000); // Wait for 5 seconds (or 5000 milliseconds)
+
+        // log the "end" to the console, indicating the end of the script execution
+        // NOTE: it is executed immediately after the setTimeout function is called, not after the 5-second delay
+        console.log("End");
+    </script>
+</div>
+
+</body>
+</html>

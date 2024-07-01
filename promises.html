@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pizza Delivery</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    #deliveryStatus {
+        padding: 20px;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<!-- PROMISES
+- Promises are used to handle asynchronous operations in JavaScript.
+- A promise represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+- Promises have three states: pending, fulfilled, or rejected.
+- The 'then' method is used to handle the resolved promise, while the 'catch' method is used to handle any errors.
+- Promises are commonly used for tasks like fetching data from a server, reading files, or making animations.
+-->
+</head>
+<body>
+
+<div id="deliveryStatus">Delivery Status:</div>
+
+<script>
+    // Create a new promise object to simulate pizza delivery
+    // It takes two parameters: resolve and reject 
+    let pizzaPromise = new Promise(function(resolve, reject) {
+
+        // Use setTimeout to simulate a 3-second delivery time
+        setTimeout(function() {
+
+            // After 3 seconds, resolve the promise with the message "Pizza delivered!"
+            resolve("Pizza delivered!");
+
+        }, 3000); // Delivery in 3 seconds (3000 milliseconds)
+    });
+
+    // Handle the resolved promise using the 'then' method
+    pizzaPromise.then(function(message) {
+
+        // Update the delivery status on the page with the resolved message
+        document.getElementById('deliveryStatus').textContent = message;
+
+    }).catch(function(error) {
+
+        // Handle any potential errors by logging them to the console
+        console.log("Delivery failed:", error);
+    });
+</script>
+
+</body>
+</html>

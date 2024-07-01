@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interval Example</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        padding: 20px;
+        text-align: center;
+    }
+    .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: inline-block;
+    }
+    .message {
+        font-size: 24px;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Interval Example</h1>
+  <p>Check the console for output.</p>
+  
+  <!-- Message we want to update -->
+  <div class="message" id="tickMessage">Tick...</div>
+
+  <script>
+      // Use setInterval to repeatedly execute a function at specified intervals (1000 milliseconds in this case, equivalent to 1 second)
+      setInterval(function() {
+          // Get the current time
+          const currentTime = new Date();
+          
+          // Format the time string as "HH:MM:SS"
+          const timeString = currentTime.getHours() + ":" + currentTime.getMinutes() + ":" + currentTime.getSeconds();
+          
+          // Update the message on the page with the current time
+          document.getElementById("tickMessage").textContent = "Tick... Current Time: " + timeString;
+          
+          // Log the current time to the console
+          console.log("Tick... Current Time: " + timeString);
+      }, 1000); // Execute every 1 second
+  </script>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeting and Farewell</title>
+
+    <!-- 
+    CALLBACK FUNCTIONS
+    It is similar to setting up a line of dominoes where each one triggers the next to fall
+    Callbacks in javascript allow you to execute functions sequentially, one after the other, like a chain reaction. 
+     -->
+
+     <!-- Style for fun (not essential to function of the page) -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Greeting and Farewell</h1>
+        <button id="greetBtn" class="btn">Greet Alice</button>
+        <br>
+        <div id="greetingMessage"></div>
+        <div id="farewellMessage"></div>
+    </div>
+
+    <script>
+        /* 
+        GREET FUNCTION
+        The greet() function takes two parameters: name and callback.
+        - The name parameter is a string representing the name of the person to greet.
+        - The callback parameter is a function that will be called after the greeting message is displayed.
+        It retrieves the greetingMessage element by the ID and sets its text content to "Hello, " + name + "!". 
+        */
+
+        function greet(name, callback) {
+            const greetingMessage = document.getElementById("greetingMessage");
+            greetingMessage.textContent = "Hello, " + name + "!";
+            callback();
+        }
+
+        /*    
+        FAREWELL FUNCTION 
+        The farewell() function sets the text content of the farewellMessage element to "Goodbye!". 
+        */
+        function farewell() {
+            const farewellMessage = document.getElementById("farewellMessage");
+            farewellMessage.textContent = "Goodbye!";
+        }
+
+      /* 
+      EVENT LISTENER
+      An event listener is added to the greetBtn button element -> it will wait for something "anything" to happen to the button
+      - When the button is clicked, the greet() function is called with the name "Alice" and the farewell() function as the callback.
+      - The farewell() function is executed after the greet() function completes, displaying the farewell message "Goodbye!". 
+      */
+
+        document.getElementById("greetBtn").addEventListener("click", function() {
+            greet("Alice", farewell);
+        });
+    </script>
+</body>
+</html>
